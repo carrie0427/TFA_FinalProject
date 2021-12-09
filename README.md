@@ -67,3 +67,28 @@ df = pd.read_csv("311_Service_Requests_2020.csv")
 my_zip = df[df["Incident Zip"] == 10036]
 ```
 <br />
+
+The next step is to compute the number of parking incidents in our ZIP and across all ZIP codes, and the total number of all incidents in our ZIP and across all ZIP codes as well. We use `sum()` to calculate the number of parking incidents and `len()` to get the total number of all incidents.
+```
+total_number_of_parking_incidents_in_my_ZIP = (my_zip["Complaint Type"] == "Illegal Parking").sum()
+total_number_of_all_incidents_in_my_ZIP = len(my_zip)
+
+total_number_of_parking_incidents = (df["Complaint Type"] == "Illegal Parking").sum()
+total_number_of_all_incidents = len(df)
+```
+<br />
+
+After that, we calculate the two proportion by simply using `/`.
+```
+parking_proportion_in_my_zip = total_number_of_parking_incidents_in_my_ZIP / total_number_of_all_incidents_in_my_ZIP
+parking_proportion_of_all = total_number_of_parking_incidents / total_number_of_all_incidents
+```
+<br />
+
+At last, we assign the boolean of whether the proportion in our neighborhood is greater to that across all ZIP codes to `higher_parking_proportion`.
+```
+higher_parking_proportion = parking_proportion_in_my_zip > parking_proportion_of_all
+```
+<br />
+
+In our chosen neightborhood `10036`, the result is `False`, indicating that our ZIP contains a lower proportion of parking incidents than the global value.
