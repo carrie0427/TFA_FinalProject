@@ -52,3 +52,18 @@ assert isinstance(top10, pd.Series)
 No AssertionError is raised. So we could assume that the requirements are fulfilled.
 <br />
 <br />
+
+### Parking.ipynb ###
+Like what we have done for the other file, we import csv and pandas for later use. 
+```
+import pandas as pd
+import csv
+```
+<br />
+
+Also, we read the csv file given and use dataframe to contain the data of our chosen zipcode.
+```
+df = pd.read_csv("311_Service_Requests_2020.csv")
+my_zip = df[df["Incident Zip"] == 10036]
+```
+<br />
